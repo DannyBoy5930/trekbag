@@ -6,9 +6,10 @@ export default function AddItemForm({ onAddItem }) {
   const inputRef = useRef();
 
   const handleSubmit = (e) => {
+    // Remove HTML-Form default behaviour
     e.preventDefault();
 
-    // basic validation
+    // basic validation - guard statement
     if (!itemText) {
       alert("Item can't be empty");
       inputRef.current.focus();
@@ -28,7 +29,7 @@ export default function AddItemForm({ onAddItem }) {
         onChange={(e) => {
           setItemText(e.target.value);
         }}
-        autoFocus
+        autoFocus={true}
       />
       <Button>Add to list</Button>
     </form>

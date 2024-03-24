@@ -1,6 +1,6 @@
-import Select from "react-select";
-import EmptyView from "./EmptyView";
 import { useMemo, useState } from "react";
+import EmptyView from "./EmptyView";
+import Select from "react-select";
 import { useItemsStore } from "../stores/itemsStore";
 
 const sortingOptions = [
@@ -42,7 +42,7 @@ export default function ItemList() {
 
   return (
     <ul className="item-list">
-      {items.length === 0 ? <EmptyView /> : null}
+      {items.length === 0 && <EmptyView />}
 
       {items.length > 0 ? (
         <section className="sorting">
@@ -53,7 +53,6 @@ export default function ItemList() {
           />
         </section>
       ) : null}
-
       {sortedItems.map((item) => {
         return (
           <Item
@@ -76,7 +75,7 @@ function Item({ item, onDeleteItem, onToggleItem }) {
           onChange={() => onToggleItem(item.id)}
           checked={item.packed}
           type="checkbox"
-        />{" "}
+        />
         {item.name}
       </label>
 
